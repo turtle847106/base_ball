@@ -71,12 +71,7 @@ int main(void)
 
     // 정답 생성 함수 호출
     make_answer(answer);
-  
-    for (i = 0; i < 4; i++)
-    {
-        printf(" %d", answer[i]);
-    }
-    printf("\n");
+ 
     printf("=== 숫자 야구 게임 ===\n");
     printf("=== 숫자 4개를 입력하여 정답을 맞추시오 ===\n");
 
@@ -112,21 +107,24 @@ int main(void)
         count++;
 
         // strike, ball 계산
-        for (i = 0; i < 4; i++) // 이중 for문 수정 
+        int check[10] = { 0 };
+
+        for (i = 0; i < 4; i++)
         {
-            for (j = 0; j < 4; j++)
+            check[answer[i]] = 1;
+        }
+
+        strike = 0;
+        ball = 0;
+
+        for (i = 0; i < 4; i++)
+        {
+            if (check[guess[i]] == 1)
             {
-                if (answer[i] == guess[j])
-                {
-                    if (i == j)
-                    {
-                        strike++;
-                    }
-                    else
-                    {
-                        ball++;
-                    }
-                }
+                if (answer[i] == guess[i])
+                    strike++;
+                else
+                    ball++;
             }
         }
 
