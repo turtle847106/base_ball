@@ -64,14 +64,14 @@ int main(void)
 {
     int answer[4], guess[4];
     int i, j, strike, ball;
-    int life = 7, count = 0;
+    int life = 3, count = 0;
     char input[5];
 
     srand(time(NULL));
 
     // 정답 생성 함수 호출
     make_answer(answer);
- 
+  
     printf("=== 숫자 야구 게임 ===\n");
     printf("=== 숫자 4개를 입력하여 정답을 맞추시오 ===\n");
 
@@ -137,7 +137,7 @@ int main(void)
         }
 
         // 결과 출력
-        if (ball == 0 && strike == 0)
+        else if (ball == 0 && strike == 0)
         {
             printf("Out\n");
         }
@@ -171,6 +171,6 @@ int main(void)
             printf("%d", answer[i]);
         }
     }
-
+    printf("\n");
     return 0;
 }
